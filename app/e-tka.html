@@ -286,6 +286,21 @@
                     
                 </div>
             </div>
+			
+			<!-- Tombol Download SHTKA -->
+            <div class="bg-gray-50 border p-6 rounded-lg mt-4 flex flex-col sm:flex-row items-center justify-between gap-4" style="padding-top: 15px;padding-bottom: 15px;">
+                <div class="text-left w-full sm:w-auto">
+                    <p class="font-semibold text-teal-700 text-sm sm:text-base">Download SHTKA</p>
+                    <p class="text-xs sm:text-sm text-gray-500 text-justify">Simpan Sertifikat Hasil TKA (SHTKA) dalam format file PDF</p>
+                </div>
+                <button id="download-shtka-btn" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-teal-700 active:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-200 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    <span id="download-btn-text">Download PDF</span>
+                </button>
+            </div>
+			
 		</div>
 	</div>
 </div>
@@ -293,6 +308,7 @@
 <script>
     const dataSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQpQZ4pCId-9A7g6HcCE7gS4VrRQhgFrzBA4-2WnigOfeSnP1e9qZ0PAHj2F69P_-l25Df1_3P4LPY_/pub?gid=0&single=true&output=csv';
     const photoBaseUrl = 'https://maarif1jombang.github.io/file/foto_siswa'; 
+    const shtkaBaseUrl = 'https://maarif1jombang.github.io/file/shtka';
   
     const columns = {
         nama: 'Nama Siswa',
@@ -316,11 +332,14 @@
     const errorMessage = document.getElementById('error-message');
     const studentListBody = document.getElementById('student-list-body'); 
     const searchSubtitle = document.getElementById('search-subtitle');
+    const downloadShtkaBtn = document.getElementById('download-shtka-btn');
+    const downloadBtnText = document.getElementById('download-btn-text');
 
     let announcementDataCache = null;
     let lastView = 'login'; 
+    let currentStudent = null;
 
-    // Robust CSV Parser yang menangani koma dan tanda kutip ganda di dalam sel (seperti e-Ardis)
+    // Robust CSV Parser untuk menampung sel ber-quote ganda dan koma
     function parseCSV(str) {
         const arr = [];
         let quote = false;  
@@ -363,10 +382,10 @@
         try {
             const cacheBuster = `&_=${new Date().getTime()}`;
             const response = await fetch(dataSheetUrl + cacheBuster);
-            if (!response.ok) { throw new Error(`Gagal menghubungi server. Status: ${response.status}`); }
+            if (!response.ok) throw new Error(`Gagal menghubungi server. Status: ${response.status}`);
             const csvText = await response.text();
             if (csvText.trim().toLowerCase().startsWith('<!doctype html')) {
-                errorMessage.textContent = 'Format data salah. Pastikan URL berasal dari "Publikasikan ke web" (sebagai .csv), bukan dari tombol "Bagikan".';
+                errorMessage.textContent = 'Format data salah. Pastikan URL berasal dari "Publikasikan ke web" (sebagai .csv).';
                 errorMessage.classList.remove('hidden');
                 return null;
             }
@@ -402,13 +421,8 @@
     function showStudentList(students, searchType, queryText) {
         studentListBody.innerHTML = ''; 
         
-        // Atur tulisan di sub-judul
         if (searchSubtitle) {
-            if (searchType === 'tahun') {
-                searchSubtitle.innerHTML = `Tahun ${queryText}`;
-            } else {
-                searchSubtitle.innerHTML = `Hasil Pencarian Nama: "${queryText}"`;
-            }
+            searchSubtitle.innerHTML = searchType === 'tahun' ? `Tahun ${queryText}` : `Hasil Pencarian Nama: "${queryText}"`;
         }
 
         students.forEach((student, index) => {
@@ -434,16 +448,17 @@
         lastView = 'list'; 
     }
 
-    window.selectStudentFromList = async function(nisn) {
+    // Mengubah fungsi selectStudent agar sinkronus karena aksi render detail bersifat sinkronus
+    window.selectStudentFromList = function(nisn) {
         if (!announcementDataCache) return;
         const student = announcementDataCache.find(s => s.nisn === nisn);
-        if (student) {
-            showAnnouncementDetails(student);
-        }
+        if (student) showAnnouncementDetails(student);
     };
     
     function showAnnouncementDetails(student) {
         if (!student) return;
+        currentStudent = student; 
+
         document.getElementById('student-name').textContent = student.nama;
         document.getElementById('student-exam-number').textContent = student.noUjian;
         document.getElementById('student-nisn').textContent = student.nisn;
@@ -460,7 +475,6 @@
         const studentInitials = document.getElementById('student-initials');
         const studentPhoto = document.getElementById('student-photo');
 
-        // Reset state awal foto dengan inisial
         studentInitials.textContent = getInitials(student.nama);
         studentPhoto.classList.add('hidden');
         studentInitials.classList.remove('hidden');
@@ -468,13 +482,11 @@
 
         if (student.nisn) {
             studentPhoto.src = `${photoBaseUrl}/${student.nisn}.jpg`;
-
             studentPhoto.onload = function() {
                 studentPhoto.classList.remove('hidden'); 
                 studentInitials.classList.add('hidden'); 
                 photoContainer.classList.remove('bg-teal-600'); 
             };
-
             studentPhoto.onerror = function() {
                 studentPhoto.classList.add('hidden');
                 studentInitials.classList.remove('hidden');
@@ -513,8 +525,6 @@
         if (!allStudents) return;
         
         const searchInputLower = searchInput.toLowerCase();
-        
-        // 1. Cek NISN Terlebih Dahulu (Harus persis sama)
         const studentByNisn = allStudents.find(s => s.nisn === searchInput);
         
         if (studentByNisn) {
@@ -522,14 +532,12 @@
             showAnnouncementDetails(studentByNisn);
             errorMessage.classList.add('hidden');
         } else {
-            // 2. Cek Tahun Pelajaran Terlebih Dahulu (Urutan Google Sheet tetap dipertahankan)
             const studentsByYear = allStudents.filter(student => student.tahunPelajaran && student.tahunPelajaran.toLowerCase() === searchInputLower);
             
             if (studentsByYear.length > 0) {
                 showStudentList(studentsByYear, 'tahun', searchInput);
                 errorMessage.classList.add('hidden');
             } else {
-                // 3. Cek Pencarian Nama Siswa
                 const nameMatches = allStudents.filter(student => student.nama && student.nama.toLowerCase().includes(searchInputLower));
                 
                 if (nameMatches.length === 1) {
@@ -549,6 +557,7 @@
 
     function handleLogout() {
         detailContainer.classList.add('hidden');
+        currentStudent = null; 
         
         if (lastView === 'list') {
             listContainer.classList.remove('hidden');
@@ -566,18 +575,42 @@
         errorMessage.classList.add('hidden');
     }
 
+    downloadShtkaBtn.addEventListener('click', () => {
+        if (currentStudent && currentStudent.nisn) {
+            const originalText = downloadBtnText.textContent;
+            
+            downloadBtnText.textContent = 'Mengunduh...';
+            downloadShtkaBtn.disabled = true;
+            downloadShtkaBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            const pdfUrl = `${shtkaBaseUrl}/${currentStudent.nisn}.pdf`;
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.target = '_blank';
+            link.download = `${currentStudent.nisn}.pdf`;
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                downloadBtnText.textContent = originalText;
+                downloadShtkaBtn.disabled = false;
+                downloadShtkaBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }, 2000);
+        }
+    });
+
     loginButton.addEventListener('click', handleLogin);
     logoutButton.addEventListener('click', handleLogout); 
     backToSearchFromListButton.addEventListener('click', handleBackToListSearch); 
     searchInputElem.addEventListener('keyup', (event) => { if (event.key === 'Enter') handleLogin(); });
 
-    async function initialize() {
+    document.addEventListener('DOMContentLoaded', () => {
         loginContainer.classList.remove('hidden');
         fetchAndProcessData();
-    }
-
-    document.addEventListener('DOMContentLoaded', initialize);
-	document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    });
 </script>
 </body>
 </html>

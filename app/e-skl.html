@@ -6,6 +6,7 @@
     <title>e-SKL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -80,17 +81,12 @@
 			</div>
 			
 			<div class="relative">
-				<!-- Input menggunakan placeholder kosong " " agar :placeholder-shown bekerja -->
 				<input type="text" id="searchInput" name="searchInput" placeholder=" " class="peer w-full pl-12 pr-4 py-2 border rounded-md text-gray-900 bg-transparent focus:outline-none focus:ring-1 focus:ring-teal-600 focus:border-teal-600" />
-
-				<!-- Ikon Kaca Pembesar (Search) -->
 				<span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-400 peer-focus:text-teal-600">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
 						<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
 					</svg>
 				</span>
-
-				<!-- Label yang akan otomatis naik ke atas garis -->
 				<label for="searchInput" class="absolute left-11 top-1/2 -translate-y-1/2 origin-[0] scale-100 text-gray-400 duration-150 transform bg-white px-1 pointer-events-none peer-focus:top-0 peer-focus:scale-85 peer-focus:text-teal-600 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-85" >Masukkan 10 digit NISN</label>
 			</div>
 
@@ -101,7 +97,7 @@
 				</button>
 				<div class="flex text-[13px] items-center pt-2 w-full">
 					<p id="error-message" class="text-red-500 text-left hidden"></p>
-					<a href="https://api.whatsapp.com/send?phone=6285748408728&text=Assalamu%27alaikum.%0APak+saya+lupa+nomor+NISN+saya,+mohon+bantuannya+ya +pak%21" target="_blank" class="font-semibold text-teal-600 ml-auto hover:underline cursor-pointer">Lupa No. NISN ?</a>
+					<a href="https://api.whatsapp.com/send?phone=6285748408728&text=Assalamu%27alaikum.%0APak+saya+lupa+nomor+NISN+saya,+mohon+bantuannya+ya+pak%21" target="_blank" class="font-semibold text-teal-600 ml-auto hover:underline cursor-pointer">Lupa No. NISN ?</a>
 				</div>
 			</div>
 			
@@ -111,14 +107,12 @@
                 </p>
             </div>
 			
-			<!-- Pemisah Garis - Teks - Garis -->
 			<div class="flex items-center pt-4">
 				<div class="flex-1 border-t border-gray-300"></div>
 				<span class="px-3 text-xs text-gray-400 font-medium whitespace-nowrap">more app</span>
 				<div class="flex-1 border-t border-gray-300"></div>
 			</div>
 			
-			<!-- 5 Tombol dalam 1 Baris (Full Width) -->
 			<div class="flex gap-1 w-full">
 				<a href="e-absensi.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
 					e-Absensi
@@ -174,7 +168,6 @@
 						</tr>
 					</thead>
 					<tbody id="student-list-body" class="divide-y divide-gray-200">
-						<!-- Data di-inject lewat JS -->
 					</tbody>
 				</table>
 			</div>
@@ -223,17 +216,13 @@
 				</div>
 			</div>
 			
-			<!-- INFO SISWA -->
             <div class="bg-gray-50 border rounded-lg p-6 mt-4" style="padding-top: 10px;padding-bottom: 15px;">
-                
 				<div class="mb-4">
 					<h3 class="font-semibold text-sm sm:text-base text-teal-700 mb-1">Hasil Pengumuman</h3>
 					<p class="text-xs md:text-sm text-gray-500 text-justify">Berdasarkan keputusan Rapat Kelulusan tanggal <span id="announcement-date"></span>, Kepala MTs Ma'arif 1 Jombang menetapkan:</p>					
 				</div>
 				
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4">
-                    
-					<!-- No. Peserta Ujian -->
 					<div class="flex items-center gap-4">
                         <div class="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-teal-50 border border-teal-600 rounded-lg flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-teal-600"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" /></svg>
@@ -244,7 +233,6 @@
                         </div>
                     </div>
 					
-					<!-- Rata2 -->
 					<div class="flex items-center gap-4">
                         <div class="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-teal-50 border border-teal-600 rounded-lg flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-teal-600"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
@@ -255,7 +243,6 @@
                         </div>
                     </div>
 					
-					<!-- Tahun Ajaran -->
 					<div class="flex items-center gap-4">
                         <div class="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-teal-50 border border-teal-600 rounded-lg flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-teal-600"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
@@ -269,20 +256,33 @@
                 </div>
 			</div>
 
-            <!-- Pesan Jika Lulus -->
-            <div id="pesan-lulus" class="hidden border border-green-200 bg-green-50 p-6 rounded-lg mt-4" style="padding-top: 10px;padding-bottom: 10px;">
+            <div id="pesan-lulus" class="hidden border bg-green-50 p-6 rounded-lg mt-4" style="padding-top: 10px;padding-bottom: 10px;">
                 <p class="font-semibold text-green-700 text-sm sm:text-base mb-1">Selamat!  Anda Lulus</p>
                 <p class="text-xs sm:text-sm text-gray-500 text-justify leading-relaxed">
                     Tetap rendah hati, pertahankan prestasi, dan melangkahlah ke jenjang berikutnya dengan penuh semangat!
                 </p>
             </div>
 
-            <!-- Pesan Jika Tidak Lulus -->
-            <div id="pesan-tidak-lulus" class="hidden border border-red-200 bg-red-50 p-6 rounded-lg mt-4" style="padding-top: 10px;padding-bottom: 10px;">
+            <div id="pesan-tidak-lulus" class="hidden border bg-red-50 p-6 rounded-lg mt-4" style="padding-top: 10px;padding-bottom: 10px;">
                 <p class="font-semibold text-red-700 text-sm sm:text-base mb-1">Maaf!  Anda belum Lulus</p>
                 <p class="text-xs sm:text-sm text-gray-500 text-justify leading-relaxed">
-                    Jangan berkecil hati, ini bukan akhir segalanya. Tetap semangat, terus belajar, dan bersiaplah untuk kesempatan berikutnya!
+                    Jangan berkecil hati, ini bukan akhir segalanya. Tetap semangat, terus belajar dan bersiaplah untuk kesempatan berikutnya!
                 </p>
+            </div>
+			
+			<!-- Tombol Download SKL -->
+            <!-- Diberikan ID "download-skl-container" untuk kontrol otomatis visibilitasnya -->
+            <div id="download-skl-container" class="bg-gray-50 border p-6 rounded-lg mt-4 flex flex-col sm:flex-row items-center justify-between gap-4" style="padding-top: 15px;padding-bottom: 15px;">
+                <div class="text-left w-full sm:w-auto">
+                    <p class="font-semibold text-teal-700 text-sm sm:text-base">Download SKL</p>
+                    <p class="text-xs sm:text-sm text-gray-500 text-justify">Simpan Surat Keterangan Lulus (SKL) dalam format file PDF</p>
+                </div>
+                <button id="download-skl-btn" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-teal-700 active:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-200 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    <span id="download-btn-text">Download PDF</span>
+                </button>
             </div>
 
 		</div>
@@ -292,6 +292,7 @@
     const dataSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7DWAJ5w-6p1EbLSrZoURhHSp0ry2iy89EfO3JMcr1rWhPODr76qvTMr3ai2pvZj1SiFM2N5uAKlGF/pub?gid=0&single=true&output=csv';
     const configSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT7DWAJ5w-6p1EbLSrZoURhHSp0ry2iy89EfO3JMcr1rWhPODr76qvTMr3ai2pvZj1SiFM2N5uAKlGF/pub?gid=1910672228&single=true&output=csv'; 
 	const photoBaseUrl = 'https://maarif1jombang.github.io/file/foto_siswa'; 
+    const sklBaseUrl = 'https://maarif1jombang.github.io/file/skl';
   
     const columns = {
         nama: 'Nama Siswa',
@@ -309,14 +310,18 @@
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
     const backToSearchFromListButton = document.getElementById('back-to-search-from-list');
+    const downloadSklBtn = document.getElementById('download-skl-btn');
+    const downloadBtnText = document.getElementById('download-btn-text');
     const searchInputElem = document.getElementById('searchInput');
     const errorMessage = document.getElementById('error-message');
     const studentListBody = document.getElementById('student-list-body');
     const listSubtitle = document.getElementById('list-subtitle');
+    const downloadSklContainer = document.getElementById('download-skl-container'); // Selector untuk kontainer Download SKL
 
     let announcementDataCache = null;
     let lastView = 'login';
     let countdownInterval;
+    let currentStudent = null; 
 
     function parseCSV(str) {
         const arr = [];
@@ -363,7 +368,7 @@
             if (!response.ok) { throw new Error(`Gagal menghubungi server. Status: ${response.status}`); }
             const csvText = await response.text();
             if (csvText.trim().toLowerCase().startsWith('<!doctype html')) {
-                errorMessage.textContent = 'Format data salah. Pastikan URL berasal dari "Publikasikan ke web" (sebagai .csv), bukan dari tombol "Bagikan".';
+                errorMessage.textContent = 'Format data salah. Pastikan URL berasal dari "Publikasikan ke web" (sebagai .csv).';
                 errorMessage.classList.remove('hidden');
                 return null;
             }
@@ -385,6 +390,35 @@
             return null;
         }
     }
+
+    downloadSklBtn.addEventListener('click', () => {
+        if (currentStudent && currentStudent.nisn) {
+            const originalText = downloadBtnText.textContent;
+            
+            downloadBtnText.textContent = 'Mengunduh...';
+            downloadSklBtn.disabled = true;
+            downloadSklBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            const pdfUrl = `${sklBaseUrl}/${currentStudent.nisn}.pdf`;
+            
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.target = '_blank';
+            link.download = `${currentStudent.nisn}.pdf`;
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                downloadBtnText.textContent = originalText;
+                downloadSklBtn.disabled = false;
+                downloadSklBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }, 2000);
+        } else {
+            console.error("Error: Data siswa tidak valid atau belum dimuat!");
+        }
+    });
 
     function getInitials(name) {
         if (!name) return '??';
@@ -431,6 +465,9 @@
     
     function showAnnouncementDetails(student) {
         if (!student) return;
+        
+        currentStudent = student; 
+        
         document.getElementById('student-name').textContent = student.nama;
         document.getElementById('student-exam-number').textContent = student.noUjian;
         document.getElementById('student-nisn').textContent = student.nisn;
@@ -438,7 +475,6 @@
         document.getElementById('announcement-date').textContent = student.tanggalPengumuman;
 		document.getElementById('tahun-pelajaran').textContent = student.tahunPelajaran;
         
-        const photoContainer = document.getElementById('photo-container');
         const initialsElem = document.getElementById('student-initials');
         const studentPhoto = document.getElementById('student-photo');
 
@@ -448,12 +484,10 @@
 
         if (student.nisn) {
             studentPhoto.src = `${photoBaseUrl}/${student.nisn}.jpg`;
-
             studentPhoto.onload = function() {
                 studentPhoto.classList.remove('hidden'); 
                 initialsElem.classList.add('hidden'); 
             };
-
             studentPhoto.onerror = function() {
                 studentPhoto.classList.add('hidden');
                 initialsElem.classList.remove('hidden');
@@ -464,13 +498,18 @@
         const pesanTidakLulus = document.getElementById('pesan-tidak-lulus');
         const statusText = student.status ? student.status.trim().toLowerCase() : '-';
         
+        // Sembunyikan semua status pesan & tombol download SKL secara default
         pesanLulus.classList.add('hidden');
-        pesanTidakLulus.classList.add('hidden');
+        pesanTidakLulus.classList.add('hidden'); 
+        downloadSklContainer.classList.add('hidden');
         
+        // Cek status kelulusan siswa
         if (statusText === 'lulus') {
             pesanLulus.classList.remove('hidden');
+            downloadSklContainer.classList.remove('hidden'); // Menu Download SKL HANYA muncul jika siswa LULUS
         } else if (statusText === 'tidak lulus') {
             pesanTidakLulus.classList.remove('hidden');
+            // downloadSklContainer tetap tersembunyi karena tidak dijalankanclassList.remove('hidden')
         }
         
         loginContainer.classList.add('hidden');
@@ -619,13 +658,13 @@
             const configData = parseCSV(csvText);
             const announcementSetting = configData.find(row => row.Setting === 'Waktu Pengumuman');
             if (!announcementSetting || !announcementSetting.Value) {
-                errorMessage.textContent = 'Waktu pengumuman belum diatur. Silakan hubungi administrator.';
+                errorMessage.textContent = 'Waktu pengumuman belum diatur.';
                 errorMessage.classList.remove('hidden');
-                throw new Error('Waktu Pengumuman tidak ditemukan di sheet konfigurasi.');
+                throw new Error('Waktu Pengumuman tidak ditemukan.');
             }
             const targetDate = new Date(announcementSetting.Value).getTime();
             if (isNaN(targetDate)) {
-                 errorMessage.textContent = 'Format tanggal di Google Sheet salah. Gunakan format: YYYY-MM-DD HH:MM:SS';
+                 errorMessage.textContent = 'Format tanggal salah. Gunakan format: YYYY-MM-DD HH:MM:SS';
                  errorMessage.classList.remove('hidden');
                  throw new Error('Invalid date format');
             }
