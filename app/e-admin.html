@@ -112,42 +112,41 @@
 			</div>
 			
 			<div class="bg-teal-50 border-l-4 border-teal-600 rounded-md flex p-2 space-x-2" style="padding-left: 10px;padding-right: 15px;">
-                <p class="text-xs text-teal-700 text-justify">
-                    Menghadirkan kemudahan, wujudkan Administrasi Madrasah yang Cepat, Tepat dan Transparan.
-                </p>
-            </div>
-			
-			<!-- Pemisah Garis - Teks - Garis -->
-			<div class="flex items-center pt-4">
-				<div class="flex-1 border-t border-gray-300"></div>
-				<span class="px-3 text-xs text-gray-400 font-medium whitespace-nowrap">more app</span>
-				<div class="flex-1 border-t border-gray-300"></div>
+				<p class="text-xs text-teal-700 text-justify">
+					Menghadirkan kemudahan, wujudkan Administrasi Madrasah yang Cepat, Tepat dan Transparan.
+				</p>
 			</div>
 			
-			<!-- 5 Tombol dalam 1 Baris (Full Width) -->
-			<div class="flex gap-1 w-full">
-				<a href="e-absensi.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
-					e-Absensi
-				</a>
-				<a href="e-ardis.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
-					e-Ardis
-				</a>
-				<a href="e-admin.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
-					e-Admin
-				</a>
-				<a href="e-skl.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
-					e-SKL
-				</a>
-				<a href="e-tka.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[10.5px]">
-					e-TKA
-				</a>
-			</div>
+			<!-- Menggunakan Fieldset untuk Border Utuh Sempurna -->
+			<fieldset class="border border-gray-300 rounded-lg px-3 pb-3 pt-1.5">
+				
+				<!-- Legend Otomatis Berada Tepat di Tengah-Tengah Garis -->
+				<legend class="ml-0.5 px-2 text-xs text-teal-600 font-semibold whitespace-nowrap">
+					more app
+				</legend>
+
+				<!-- 4 Tombol dalam 1 Baris (Full Width) -->
+				<div class="flex gap-1 w-full">
+					<a href="e-ardis.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[11px]">
+						e-Ardis
+					</a>
+					<a href="e-admin.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[11px]">
+						e-Admin
+					</a>
+					<a href="e-skl.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[11px]">
+						e-SKL
+					</a>
+					<a href="e-tka.html" class="flex-1 flex items-center justify-center px-1 py-1 text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-teal-600 transition duration-300 shadow-md text-[11px]">
+						e-TKA
+					</a>
+				</div>
+			</fieldset>
 			
 			<p class="text-xs text-gray-500 text-center">&copy; <span id="year"></span> MTs Ma'arif 1 Jombang</p>
 		</div>
 
 		<!-- 2. Kontainer Hasil Pencarian -->
-		<div id="list-container" class="hidden w-full max-w-4xl p-6 md:p-8 space-y-4 md:space-y-6 card">
+		<div id="list-container" class="hidden w-full max-w-4xl p-8 space-y-4 md:space-y-6 card">
 			<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-3 md:pb-4 gap-3 md:gap-4">
 				<div class="flex items-center gap-4">
 					<div class="flex-shrink-0 text-teal-600 bg-teal-50 p-2 rounded-lg border border-teal-600">
@@ -189,7 +188,7 @@
 		</div>
 
 		<!-- 3. Kontainer Detail Administrasi -->
-		<div id="detail-container" class="hidden w-full max-w-4xl p-6 md:p-8 card">
+		<div id="detail-container" class="hidden w-full max-w-4xl p-8 card">
 			<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-3 md:pb-4 gap-3 md:gap-4">
 				<div class="flex items-center gap-4">
 					<div class="flex-shrink-0 text-teal-600 bg-teal-50 p-2 rounded-lg border border-teal-600">
@@ -222,7 +221,7 @@
 					</div>
 					
 					<div class="mt-1">
-						<p id="student-name" class="font-semibold text-sm sm:text-base"></p>
+						<p id="student-name" class="font-semibold text-sm sm:text-base uppercase"></p>
 						<div class="flex flex-row gap-1 items-center mt-1">
 							<p class="text-xs sm:text-sm text-gray-500">NISN</p>
 							<p class="w-1 h-1 rounded-full bg-gray-400"></p>
@@ -233,7 +232,7 @@
 			</div>
 			
 			<!-- INFO SISWA -->
-			<div class="bg-gray-50 border rounded-lg p-6 mt-4" style="padding-top: 10px;padding-bottom: 15px;">
+			<div class="mt-6">
 				
 				<div class="border-b flex flex-row items-center gap-1 mb-4 pb-1">
 					<h3 class="font-semibold text-sm sm:text-base text-teal-700">Administrasi Kelas</h3>
@@ -290,7 +289,7 @@
 			</div>
 
 			<!-- TABEL ADMINISTRASI (Grid 3 Kolom) - Menggunakan ID untuk seleksi JS -->
-			<div id="tabel-administrasi" class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4 hidden">
+			<div id="tabel-administrasi" class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 hidden">
 
 				<!-- Kolom 1: BP3 -->
 				<div><div class="bg-white rounded-lg border flex flex-col">
@@ -345,8 +344,8 @@
 			</div>
 			
 			<!-- Info Pembayaran -->
-			<div class="border border-teal-100 bg-teal-50 p-6 rounded-lg mt-4" style="padding-top: 10px;padding-bottom: 10px;">
-				<p class="border-b font-semibold text-teal-700 text-sm sm:text-base mb-2 pb-1">Informasi Pembayaran</p>
+			<div class="mt-6">
+				<p class="border-b font-semibold text-teal-700 text-sm sm:text-base mb-1.5 pb-1">Informasi Pembayaran</p>
 				
 				<p class="text-xs sm:text-sm text-gray-700 text-justify">
 					Untuk kelancaran administrasi, berikut pilihan pembayaran yang dapat Bapak/Ibu gunakan:
@@ -484,7 +483,7 @@
 
 		const photoEl = document.getElementById('detail-student-photo');
 		const initialsEl = document.getElementById('detail-initials');
-		const expectedPhotoUrl = 'https://maarif1jombang.github.io/foto/foto_siswa/' + latestRecord.nisn + '.jpg';
+		const expectedPhotoUrl = 'https://maarif1jombang.github.io/file/foto_siswa/' + latestRecord.nisn + '.jpg';
 		
 		initialsEl.textContent = getInitials(latestRecord.nama);
 		photoEl.style.display = 'block';
