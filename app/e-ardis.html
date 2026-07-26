@@ -188,46 +188,54 @@
 
 		<!-- 3. Kontainer Detail Arsip Siswa -->
 		<div id="detail-container" class="hidden w-full max-w-4xl p-8 card">
-			<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-3 md:pb-4 gap-3 md:gap-4">
-				<div class="flex items-center gap-4 w-full sm:w-auto">
-					<div class="flex-shrink-0 text-teal-600 bg-teal-50 p-2 rounded-lg border border-teal-600">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 md:w-8 md:h-8">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.75v8.25a2.25 2.25 0 0 0 2.25 2.25h12a2.25 2.25 0 0 0 2.25-2.25V9.75m-16.5 0a2.25 2.25 0 0 1 2.25-2.25h12a2.25 2.25 0 0 1 2.25 2.25m-16.5 0V6a2.25 2.25 0 0 1 2.25-2.25h4.161c.596 0 1.168.238 1.59.661l1.72 1.72a.75.75 0 0 0 .53.22h5.132A2.25 2.25 0 0 1 20.25 8.25v1.5" />
-							<rect x="10" y="11" width="8" height="10" rx="1" fill="white" stroke="currentColor" stroke-width="1.5" />
-							<path stroke-linecap="round" stroke-linejoin="round" d="M14 13v4m0 0-1.5-1.5M14 17l1.5-1.5M12 19h4" />
-						</svg>
-					</div>
-					<div>
-						<h1 class="text-lg md:text-2xl font-bold text-gray-800">Arsip Digital Data Siswa</h1>
-						<p class="text-xs md:text-sm text-gray-500">MTs Ma'arif 1 Jombang</p>
-					</div>
-				</div>
-				<button id="back-button" class="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-red-700 bg-red-100 rounded-md hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-					</svg>
-					<span>Kembali</span>
-				</button>
-			</div>
 			
 			<!-- LAYOUT FOTO SISWA -->
-			<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-				<div class="flex items-center gap-4">
-					<div class="relative w-16 h-16 sm:w-20 sm:h-20">
-						<div class="w-full h-full rounded-full bg-teal-600 flex items-center justify-center border-2 border-white shadow-sm">
-							<span id="detail-initials" class="text-white text-xl sm:text-2xl font-bold uppercase select-none"></span>
-							<img id="detail-student-photo" class="absolute inset-0 w-full h-full rounded-full object-cover object-top border-2 border-white shadow-sm" alt="Foto Siswa">
+			<div class="card bg-base-100 overflow-hidden shadow-sm rounded-lg relative">
+				<div class="w-full bg-[#009675]" style="height: 65px;"></div>
+				<div class="flex flex-col sm:flex-row items-center sm:items-start px-4 pb-4 gap-2 sm:gap-4">
+					
+					<!-- Avatar Bulat Sempurna -->
+					<div class="avatar avatar-placeholder" style="margin-top: -50px; flex-shrink: 0; z-index: 10;">
+						<div class="bg-white rounded-full border-[3px] border-white shadow overflow-hidden relative flex items-center justify-center" style="width: 100px; height: 100px;">
+							<span id="detail-initials" class="text-[#007A5E] font-bold uppercase select-none text-center" style="font-size: 28px; line-height: 1;"></span>
+							<img id="detail-student-photo" class="absolute inset-0 w-full h-full object-cover object-top" alt="Foto Siswa">
 						</div>
 					</div>
 					
-					<div class="mt-1">
-						<p id="student-name" class="font-semibold text-sm sm:text-base uppercase"></p>
-						<div class="flex flex-row gap-1 items-center mt-1">
-							<p class="text-xs sm:text-sm text-gray-500">NISN</p>
-							<p class="w-1 h-1 rounded-full bg-gray-400"></p>
-							<p id="student-nisn" class="font-semibold text-xs sm:text-sm text-gray-800"></p>
-						</div>                    
+					<!-- User Info (Nama & NISN) -->
+					<div class="text-center sm:text-left flex-1" style="margin-top: 6px;">
+						<h1 id="student-name" class="text-gray-900 font-bold uppercase tracking-wide" style="font-size: 18px; line-height: 1.2;"></h1>
+						<p id="student-nisn" class="text-gray-400 font-medium" style="font-size: 13px;"></p>
 					</div>
+					
+					<!-- STATUS BADGE GROUP (RESPONSIF BERPINDAH) -->
+					<div class="sm:absolute sm:top-[28px] sm:left-[132px] sm:right-4 z-20 flex flex-wrap items-center justify-center sm:justify-between gap-2 mt-[14px] sm:mt-0 w-full sm:w-auto">
+						
+						<!-- Wadah khusus Badge agar tetap fleksibel antara HP (center) dan Laptop (kiri) -->
+						<div class="flex flex-wrap gap-2 items-center justify-center sm:justify-start">
+							<!-- Bingkai 1: Teks e-Ardis -->
+							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">
+								<div class="flex flex-row">
+									<p class="text-red-600">e-</p>
+									<p class="text-teal-600">Ardis</p>
+								</div>
+							</span>
+							<!-- Bingkai 2: Nama Sekolah -->
+							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">MTs Ma'arif 1 Jombang</span>
+						</div>
+						
+						<!-- Bingkai 3: Tombol Kembali (Otomatis ke kanan di laptop via sm:ml-auto) -->
+						<button id="back-button" class="sm:ml-auto inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-red-200 text-red-700 bg-red-100 hover:bg-red-200 transition-colors">
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+							</svg>
+							<span>‎  </span>
+							<!-- Teks tersembunyi di HP, muncul saat laptop (sm ke atas) -->
+							<span class="hidden sm:inline">‎Kembali</span>
+						</button>
+						
+					</div>
+					
 				</div>
 			</div>
 			

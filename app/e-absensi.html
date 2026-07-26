@@ -23,11 +23,14 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-		.card {
+        .card {
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             transition: all 0.3s ease-in-out;
+        }
+		.card:hover {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         .btn {
             display: flex;
@@ -50,7 +53,7 @@
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
         
-        /* --- CSS UNTUK NOTIFIKASI --- */
+        /* CSS Untuk Notifikasi Toast */
         #notification {
             transform: translate(-50%, -150%) scale(0.9);
             opacity: 0;
@@ -76,7 +79,9 @@
 			<div class="text-center pb-8">
 				<div class="flex justify-center mx-auto text-teal-600 mb-0">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
-						<path id="primary" d="M20,21H4a1,1,0,0,1-1-1V9H21V20A1,1,0,0,1,20,21ZM21,5a1,1,0,0,0-1-1H4A1,1,0,0,0,3,5V9H21Z" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><polyline id="secondary" points="7 15 9 17 13 13" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline><path id="secondary-2" data-name="secondary" d="M16,3V6M8,3V6m5,11,4-4" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+						<path d="M20,21H4a1,1,0,0,1-1-1V9H21V20A1,1,0,0,1,20,21ZM21,5a1,1,0,0,0-1-1H4A1,1,0,0,0,3,5V9H21Z" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+						<polyline points="7 15 9 17 13 13" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline>
+						<path d="M16,3V6M8,3V6m5,11,4-4" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
 					</svg>
 				</div>
 				<div class="flex flex-row justify-center mb-4">
@@ -91,15 +96,15 @@
 				<!-- Input menggunakan placeholder kosong " " agar :placeholder-shown bekerja -->
 				<input type="text" id="nik" name="nik" placeholder=" " class="peer w-full pl-12 pr-4 py-2 border rounded-md text-gray-900 bg-transparent focus:outline-none focus:ring-1 focus:ring-teal-600 focus:border-teal-600" />
 
-				<!-- Ikon Kaca Pembesar (Search) -->
+				<!-- Ikon Search -->
 				<span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-400 peer-focus:text-teal-600">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
 						<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
 					</svg>
 				</span>
 
-				<!-- Label yang akan otomatis naik ke atas garis -->
-				<label for="nik" class="absolute left-11 top-1/2 -translate-y-1/2 origin-[0] scale-100 text-gray-400 duration-150 transform bg-white px-1 pointer-events-none peer-focus:top-0 peer-focus:scale-85 peer-focus:text-teal-600 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-85" >Masukkan 16 digit NIK</label>
+				<!-- Floating Label -->
+				<label for="nik" class="absolute left-11 top-1/2 -translate-y-1/2 origin-[0] scale-100 text-gray-400 duration-150 transform bg-white px-1 pointer-events-none peer-focus:top-0 peer-focus:scale-85 peer-focus:text-teal-600 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-85">Masukkan 16 digit NIK</label>
 			</div>
 				
 			<div>
@@ -112,7 +117,7 @@
 				</div>
 			</div>
 			
-			<div class="bg-teal-50 border-l-4 border-teal-600 rounded-md flex p-2 space-x-2" style="padding-left: 10px;padding-right: 15px;">
+			<div class="bg-teal-50 border-l-4 border-teal-600 rounded-md flex p-2 px-3.5 space-x-2">
                 <p class="text-xs text-teal-700 text-justify">
                     Tingkatkan efisiensi kerja dengan sistem absensi online yang cepat dan akurat.
                 </p>
@@ -121,58 +126,70 @@
 			<p class="text-xs text-gray-500 text-center">&copy; <span class="year"></span> MTs Ma'arif 1 Jombang</p>
 		</div>
 
-		<!-- Halaman Absensi -->
-		<div id="absensiPage" class="hidden w-full max-w-lg p-8 card">
-			<div class="flex justify-between items-center mb-2">
-				<div class="flex items-center">
-					<button class="h-8 w-8 rounded-full flex items-center justify-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-						<svg class="h-5 w-5 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path id="primary" d="M20,21H4a1,1,0,0,1-1-1V9H21V20A1,1,0,0,1,20,21ZM21,5a1,1,0,0,0-1-1H4A1,1,0,0,0,3,5V9H21Z" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><polyline id="secondary" points="7 15 9 17 13 13" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline><path id="secondary-2" data-name="secondary" d="M16,3V6M8,3V6m5,11,4-4" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
-						</svg>
-					</button>
-					<div class="flex flex-row justify-center text-xl ml-3">
-						<p class="font-bold text-red-600">e-</p>
-						<p class="font-bold text-teal-600">Absensi</p>
-					</div>
-				</div>
-				<button id="logoutButton" title="Logout" class="h-8 w-8 rounded-full flex items-center justify-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-red-600">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-					</svg>
-				</button>
-			</div>
-			<hr class="mb-5">
-
-			<!-- FOTO PROFIL -->
-			<div class="flex justify-center -mt-2 mb-4">
-				<div class="relative w-24 h-24">
-					<!-- Fallback Icon (Ditampilkan jika gambar tidak ada/error) -->
-					<div id="profileFallback" class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center border-4 border-white shadow-md text-gray-400">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
-							<path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
-						</svg>
-					</div>
-					<!-- Image Asli -->
-					<img id="profileImage" class="absolute inset-0 w-full h-full rounded-full object-cover object-top border-4 border-white shadow-md hidden" alt="Foto Profil">
-				</div>
-			</div>
-			<!-- END FOTO PROFIL -->
-
-			<div class="text-center mb-8">
-				<p class="text-gray-500">Selamat Bekerja,</p>
-				<h2 id="teacherName" class="text-2xl font-bold text-gray-900"></h2>
-				<p class="text-gray-500">Guru MTs Ma'arif 1 Jombang</p>
-			</div>
+		<!-- Halaman Absensi Utama -->
+		<div id="absensiPage" class="hidden w-full max-w-xl p-8 card">
 			
+			<!-- LAYOUT FOTO -->
+			<div class="card bg-base-100 overflow-hidden shadow-sm rounded-lg relative">
+				<div class="w-full bg-[#009675]" style="height: 65px;"></div>
+				<div class="flex flex-col sm:flex-row items-center sm:items-start px-4 pb-4 gap-2 sm:gap-4">
+					
+					<!-- Avatar Bulat Sempurna (Bingkai Selalu Aktif) -->
+					<div class="avatar flex-shrink-0" style="margin-top: -50px; z-index: 10;">
+						<div id="profileAvatarContainer" class="bg-white rounded-full border-[3px] border-white shadow-md overflow-hidden relative flex items-center justify-center" style="width: 100px; height: 100px;">
+							<!-- Inisial Nama (Tampil Jika Foto Tidak Ada) -->
+							<span id="profileInitials" class="text-[#007A5E] font-bold uppercase select-none text-center" style="font-size: 28px; line-height: 1;"></span>
+							<!-- Foto Profil (Tampil Jika Foto Berhasil Ditinggal/Dimuat) -->
+							<img id="profileImage" class="absolute inset-0 w-full h-full object-cover object-top hidden" alt="Foto Profil">
+						</div>
+					</div>
+					
+					<!-- User Info (Nama & NIK) -->
+					<div class="text-center sm:text-left flex-1" style="margin-top: 6px;">
+						<h1 id="teacherName" class="text-gray-900 font-bold uppercase tracking-wide" style="font-size: 18px; line-height: 1.2;"></h1>
+						<p id="teacherNik" class="text-gray-400 font-medium" style="font-size: 13px;"></p>
+					</div>
+					
+					<!-- STATUS BADGE GROUP (RESPONSIF BERPINDAH) -->
+					<div class="sm:absolute sm:top-[28px] sm:left-[132px] sm:right-4 z-20 flex flex-wrap items-center justify-center sm:justify-between gap-2 mt-[14px] sm:mt-0 w-full sm:w-auto">
+						
+						<!-- Wadah khusus Badge agar tetap fleksibel antara HP (center) dan Laptop (kiri) -->
+						<div class="flex flex-wrap gap-2 items-center justify-center sm:justify-start">
+							<!-- Bingkai 1: Teks e-Absensi -->
+							<span class="hidden sm:inline inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">
+								<div class="flex flex-row">
+									<p class="text-red-600">e-</p>
+									<p class="text-teal-600">Absensi</p>
+								</div>
+							</span>
+							<!-- Bingkai 2: Nama Sekolah -->
+							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">MTs Ma'arif 1 Jombang</span>
+						</div>
+						
+						<!-- Bingkai 3: Tombol Kembali (Otomatis ke kanan di laptop via sm:ml-auto) -->
+						<button id="logoutButton" class="sm:ml-auto inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-red-200 text-red-700 bg-red-100 hover:bg-red-200 transition-colors">
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+							</svg>
+							<span>‎  </span>
+							<!-- Teks tersembunyi di HP, muncul saat laptop (sm ke atas) -->
+							<span class="hidden sm:inline">‎Keluar</span>
+						</button>
+						
+					</div>
+					
+				</div>
+			</div>
+
 			<!-- Tombol Aksi -->
-			<div class="grid grid-cols-2 gap-4 mb-8">
-				<button id="clockInButton" class="btn rounded-full bg-green-500 text-white px-4 py-2.5 hover:bg-green-600 disabled:bg-green-500">
+			<div class="grid grid-cols-2 gap-4 mb-8 mt-8">
+				<button id="clockInButton" class="btn rounded-full bg-green-500 text-white px-4 py-2 hover:bg-green-600 disabled:bg-green-500">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
 					</svg>
 					<span>Masuk</span>
 				</button>
-				<button id="clockOutButton" class="btn rounded-full bg-red-500 text-white px-4 py-2.5 hover:bg-red-600 disabled:bg-red-500">
+				<button id="clockOutButton" class="btn rounded-full bg-red-500 text-white px-4 py-2 hover:bg-red-600 disabled:bg-red-500">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
 					</svg>
@@ -180,7 +197,7 @@
 				</button>
 			</div>
 
-			<!-- Riwayat Absensi Hari Ini -->
+			<!-- Riwayat Hari Ini -->
 			<div>
 				<h3 class="text-xm font-semibold text-gray-800 mb-0 text-center">Absensi Hari Ini</h3>
 				<div id="loadingTodayHistory" class="flex justify-center items-center py-2 hidden">
@@ -195,16 +212,14 @@
 								<th class="py-2 px-4 text-center text-sm font-medium text-gray-500 tracking-wider border-b border-gray-200">Jam Pulang</th>
 							</tr>
 						</thead>
-						<tbody id="historyTableBody">
-							<!-- Data riwayat hari ini akan ditambahkan di sini -->
-						</tbody>
+						<tbody id="historyTableBody"></tbody>
 					</table>
 				</div>
 			</div>
 
-			<!-- Tombol Riwayat -->
+			<!-- Tombol Riwayat Bulanan -->
 			<div class="mt-8">
-				 <button id="monthlyHistoryButton" class="w-full btn rounded-md bg-teal-600 text-white px-4 py-2.5 hover:bg-teal-700">
+				 <button id="monthlyHistoryButton" class="w-full btn rounded-md bg-teal-600 text-white px-4 py-2 hover:bg-teal-700">
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 					</svg>
@@ -215,31 +230,62 @@
 		</div>
 
 		<!-- Halaman Riwayat Bulanan -->
-		<div id="historyPage" class="hidden w-full max-w-lg p-8 card">
-			<div class="flex justify-between items-center mb-2">
-				<div class="flex items-center">
-					<button class="h-8 w-8 rounded-full flex items-center justify-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-						<svg class="h-5 w-5 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path id="primary" d="M20,21H4a1,1,0,0,1-1-1V9H21V20A1,1,0,0,1,20,21ZM21,5a1,1,0,0,0-1-1H4A1,1,0,0,0,3,5V9H21Z" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><polyline id="secondary" points="7 15 9 17 13 13" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline><path id="secondary-2" data-name="secondary" d="M16,3V6M8,3V6m5,11,4-4" style="fill: none; stroke: rgb(0, 150, 136); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
-						</svg>
-					</button>
-					<div class="flex flex-row justify-center text-xl ml-3">
-						<p class="font-bold text-red-600">e-</p>
-						<p class="font-bold text-teal-600">Absensi</p>
+		<div id="historyPage" class="hidden w-full max-w-xl p-8 card">
+			
+			<!-- LAYOUT FOTO -->
+			<div class="card bg-base-100 overflow-hidden shadow-sm rounded-lg relative">
+				<div class="w-full bg-[#009675]" style="height: 65px;"></div>
+				<div class="flex flex-col sm:flex-row items-center sm:items-start px-4 pb-4 gap-2 sm:gap-4">
+					
+					<!-- Avatar Bulat Sempurna (Bingkai Selalu Aktif) -->
+					<div class="avatar flex-shrink-0" style="margin-top: -50px; z-index: 10;">
+						<div id="historyProfileAvatarContainer" class="bg-white rounded-full border-[3px] border-white shadow-md overflow-hidden relative flex items-center justify-center" style="width: 100px; height: 100px;">
+							<!-- Inisial Nama (Tampil Jika Foto Tidak Ada) -->
+							<span id="historyProfileInitials" class="text-[#007A5E] font-bold uppercase select-none text-center" style="font-size: 28px; line-height: 1;"></span>
+							<!-- Foto Profil (Tampil Jika Foto Berhasil Ditinggal/Dimuat) -->
+							<img id="historyProfileImage" class="absolute inset-0 w-full h-full object-cover object-top hidden" alt="Foto Profil">
+						</div>
 					</div>
+					
+					<!-- User Info (Nama & NIK) -->
+					<div class="text-center sm:text-left flex-1" style="margin-top: 6px;">
+						<h1 id="historyTeacherName" class="text-gray-900 font-bold uppercase tracking-wide" style="font-size: 18px; line-height: 1.2;"></h1>
+						<p id="historyTeacherNik" class="text-gray-400 font-medium" style="font-size: 13px;"></p>
+					</div>
+					
+					<!-- STATUS BADGE GROUP (RESPONSIF BERPINDAH) -->
+					<div class="sm:absolute sm:top-[28px] sm:left-[132px] sm:right-4 z-20 flex flex-wrap items-center justify-center sm:justify-between gap-2 mt-[14px] sm:mt-0 w-full sm:w-auto">
+						
+						<!-- Wadah khusus Badge agar tetap fleksibel antara HP (center) dan Laptop (kiri) -->
+						<div class="flex flex-wrap gap-2 items-center justify-center sm:justify-start">
+							<!-- Bingkai 1: Teks e-Absensi -->
+							<span class="hidden sm:inline inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">
+								<div class="flex flex-row">
+									<p class="text-red-600">e-</p>
+									<p class="text-teal-600">Absensi</p>
+								</div>
+							</span>
+							<!-- Bingkai 2: Nama Sekolah -->
+							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">MTs Ma'arif 1 Jombang</span>
+						</div>
+						
+						<!-- Bingkai 3: Tombol Kembali (Otomatis ke kanan di laptop via sm:ml-auto) -->
+						<button id="backButton" class="sm:ml-auto inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-red-200 text-red-700 bg-red-100 hover:bg-red-200 transition-colors">
+							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+							</svg>
+							<span>‎  </span>
+							<!-- Teks tersembunyi di HP, muncul saat laptop (sm ke atas) -->
+							<span class="hidden sm:inline">‎Kembali</span>
+						</button>
+						
+					</div>
+					
 				</div>
-				<button id="backButton" title="Kembali" class="h-8 w-8 rounded-full flex items-center justify-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-red-600">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-					</svg>
-				</button>
 			</div>
-			<hr class="mb-5">
-			<div class="text-center mb-6">
-				<div class="flex items-center justify-center">
-					<h2 class="text-2xl font-bold text-gray-900">Riwayat Absensi</h2>
-				</div>
-				<p class="text-gray-500">Rekap absensi Anda untuk bulan ini.</p>
+			
+			<div class="text-center mb-4 mt-6">
+				<h3 class="text-xm font-semibold text-gray-800 mb-0 text-center">Riwayat Absensi</h3>
 			</div>
 			<div id="loadingMonthlyHistory" class="flex justify-center items-center py-8 hidden">
 				<div class="loader"></div>
@@ -248,21 +294,19 @@
 				 <table class="min-w-full bg-white">
 					<thead class="bg-gray-50 sticky top-0">
 						<tr>
-							<th class="py-2 px-2 font-bold text-center text-sm font-medium text-gray-800 tracking-wider border-b border-r border-gray-200">Hari</th>
-							<th class="py-2 px-2 font-bold text-center text-sm font-medium text-gray-800 tracking-wider border-b border-r border-gray-200">Tanggal</th>
-							<th class="py-2 px-2 font-bold text-center text-sm font-medium text-gray-800 tracking-wider border-b border-r border-gray-200">Masuk</th>
-							<th class="py-2 px-2 font-bold text-center text-sm font-medium text-gray-800 tracking-wider border-b border-gray-200">Pulang</th>
+							<th class="py-2 px-2 text-center text-sm font-bold text-gray-800 tracking-wider border-b border-r border-gray-200">Hari</th>
+							<th class="py-2 px-2 text-center text-sm font-bold text-gray-800 tracking-wider border-b border-r border-gray-200">Tanggal</th>
+							<th class="py-2 px-2 text-center text-sm font-bold text-gray-800 tracking-wider border-b border-r border-gray-200">Masuk</th>
+							<th class="py-2 px-2 text-center text-sm font-bold text-gray-800 tracking-wider border-b border-gray-200">Pulang</th>
 						</tr>
 					</thead>
-					<tbody id="monthlyHistoryTableBody">
-						<!-- Data riwayat bulanan akan ditambahkan di sini -->
-					</tbody>
+					<tbody id="monthlyHistoryTableBody"></tbody>
 				</table>
 			</div>
 			<p class="text-xs text-gray-500 text-center mt-3.5">&copy; <span class="year"></span> MTs Ma'arif 1 Jombang</p>
 		</div>
 
-		<!-- ELEMEN HTML NOTIFIKASI -->
+		<!-- Toast Notifikasi -->
 		<div id="notification" class="fixed top-5 left-1/2 bg-green-500 text-white py-3 px-5 rounded-lg shadow-lg whitespace-nowrap">
 			<span id="notificationMessage"></span>
 		</div>
@@ -270,12 +314,11 @@
 </div>
 
 <script>
-	// --- KONFIGURASI URL ---
 	const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIhSNgEbe_hmmu2sq2EcLbKCWicqEaEWlIyfuiIxK1s_JQBV_lrSGyPAuPgyGL_LQ5/exec'; 
 	const GOOGLE_SHEET_TEACHERS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpF1RPHJAMaYj9u56dqTf1UtF8gp57yuuSxI993tnalTMEav-3HWjLC2VWS3eAe1aozkUKxwmzq69n/pub?gid=1270339686&single=true&output=csv';
 	const PHOTO_BASE_URL = 'https://maarif1jombang.github.io/file/foto_guru/'; 
   
-	let teachers = {}; 
+	const teachers = {}; 
 	let currentUser = null;
 	let notificationTimer;
 
@@ -293,9 +336,8 @@
 	const monthlyHistoryButton = document.getElementById('monthlyHistoryButton');
 	const backButton = document.getElementById('backButton');
 	
-	// Elemen Tampilan Data & Status
+	// Elemen Tampilan Data
 	const loginError = document.getElementById('loginError');
-	const teacherName = document.getElementById('teacherName');
 	const historyDate = document.getElementById('historyDate');
 	const historyTableBody = document.getElementById('historyTableBody');
 	const monthlyHistoryTableBody = document.getElementById('monthlyHistoryTableBody');
@@ -303,13 +345,75 @@
 	const loadingMonthlyHistory = document.getElementById('loadingMonthlyHistory');
 	const monthlyHistoryContainer = document.getElementById('monthlyHistoryContainer');
 
-	// Elemen Foto Profil
-	const profileImage = document.getElementById('profileImage');
-	const profileFallback = document.getElementById('profileFallback');
-
-	// Elemen Notifikasi
+	// Notifikasi
 	const notification = document.getElementById('notification');
 	const notificationMessage = document.getElementById('notificationMessage');
+
+	function showPage(page) {
+		loginPage.classList.toggle('hidden', page !== 'login');
+		absensiPage.classList.toggle('hidden', page !== 'absensi');
+		historyPage.classList.toggle('hidden', page !== 'history');
+	}
+
+	function showNotification(message, type = 'success') {
+		if (notificationTimer) clearTimeout(notificationTimer);
+
+		notificationMessage.textContent = message;
+		notification.classList.toggle('bg-green-500', type === 'success');
+		notification.classList.toggle('bg-red-500', type !== 'success');
+		notification.classList.add('show');
+
+		notificationTimer = setTimeout(() => notification.classList.remove('show'), 3000);
+	}
+
+	function setProfileSection(nameId, nikId, initialsId, imgId, name, nik, initials, photoUrl) {
+		const nameEl = document.getElementById(nameId);
+		const nikEl = document.getElementById(nikId);
+		const initialsEl = document.getElementById(initialsId);
+		const imgEl = document.getElementById(imgId);
+
+		if (nameEl) nameEl.textContent = name;
+		if (nikEl) nikEl.textContent = nik;
+
+		if (initialsEl) {
+			initialsEl.textContent = initials;
+			initialsEl.classList.remove('hidden');
+		}
+
+		if (imgEl) {
+			imgEl.classList.add('hidden');
+			if (photoUrl) {
+				imgEl.src = photoUrl;
+				
+				// Ketika foto BERHASIL dimuat
+				imgEl.onload = () => {
+					imgEl.classList.remove('hidden');
+					if (initialsEl) initialsEl.classList.add('hidden');
+				};
+				
+				// Ketika foto GAGAL dimuat
+				imgEl.onerror = () => {
+					imgEl.classList.add('hidden');
+					if (initialsEl) initialsEl.classList.remove('hidden');
+				};
+			}
+		}
+	}
+
+	function updateUserProfiles() {
+		if (!currentUser) return;
+
+		const name = currentUser.name || '';
+		const nik = currentUser.nik || '';
+		const initials = getInitials(name);
+		const photoUrl = nik ? `${PHOTO_BASE_URL}${nik}.jpg` : '';
+
+		// Update Profil di Halaman Absensi Utama
+		setProfileSection('teacherName', 'teacherNik', 'profileInitials', 'profileImage', name, nik, initials, photoUrl);
+
+		// Update Profil di Halaman Riwayat Bulanan
+		setProfileSection('historyTeacherName', 'historyTeacherNik', 'historyProfileInitials', 'historyProfileImage', name, nik, initials, photoUrl);
+	}
 
 	async function loadTeachersData() {
 		try {
@@ -317,89 +421,37 @@
 			if (!response.ok) throw new Error('Gagal memuat data guru');
 			
 			const csvData = await response.text();
-			const lines = csvData.split('\n');
-
-			for (let i = 0; i < lines.length; i++) {
-				const line = lines[i].trim();
-				if (line) {
-					const parts = line.split(',');
-					if (parts.length >= 2) {
-						const nik = parts[0].trim();
-						const name = parts[1].trim();
-						if (nik && name) {
-							teachers[nik] = name;
-						}
-					}
+			csvData.split(/\r?\n/).forEach(line => {
+				const parts = line.split(',');
+				if (parts.length >= 2) {
+					const nik = parts[0].trim();
+					const name = parts[1].trim();
+					if (nik && name) teachers[nik] = name;
 				}
-			}
+			});
 
 			loginButton.disabled = false;
-			nikInput.disabled = false;
-			nikInput.placeholder = " ";
-
 		} catch (error) {
 			console.error('Error loading teacher data:', error);
 			loginError.textContent = 'Gagal mengambil data server.';
-			nikInput.placeholder = " ";
 			loginButton.disabled = true;
 		}
-	}
-
-	function showPage(page) {
-		loginPage.classList.add('hidden');
-		absensiPage.classList.add('hidden');
-		historyPage.classList.add('hidden');
-
-		if (page === 'login') {
-			loginPage.classList.remove('hidden');
-		} else if (page === 'absensi') {
-			absensiPage.classList.remove('hidden');
-		} else if (page === 'history') {
-			historyPage.classList.remove('hidden');
-		}
-	}
-
-	function showNotification(message, type = 'success') {
-		if (notificationTimer) {
-			clearTimeout(notificationTimer);
-		}
-
-		notificationMessage.textContent = message;
-
-		if (type === 'success') {
-			notification.classList.remove('bg-red-500');
-			notification.classList.add('bg-green-500');
-		} else {
-			notification.classList.remove('bg-green-500');
-			notification.classList.add('bg-red-500');
-		}
-
-		notification.classList.add('show');
-
-		notificationTimer = setTimeout(() => {
-			notification.classList.remove('show');
-		}, 3000);
 	}
 	
 	function handleLogin() {
 		const loginInput = nikInput.value.trim().toLowerCase();
-		let userFound = null;
 
 		if (!loginInput) {
 			loginError.textContent = 'Input tidak boleh kosong.';
 			return;
 		}
 
-		for (const nik in teachers) {
-			const name = teachers[nik].toLowerCase();
-			if (nik === loginInput || name.includes(loginInput)) {
-				userFound = { nik: nik, name: teachers[nik] };
-				break;
-			}
-		}
+		const match = Object.entries(teachers).find(([nik, name]) => 
+			nik === loginInput || name.toLowerCase().includes(loginInput)
+		);
 
-		if (userFound) {
-			currentUser = userFound;
+		if (match) {
+			currentUser = { nik: match[0], name: match[1] };
 			sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
 			loginError.textContent = '';
 			nikInput.value = '';
@@ -409,28 +461,18 @@
 		}
 	}
 
+	function getInitials(name) {
+		if (!name) return '?';
+		const cleaned = name.replace(/[^a-zA-Z\s]/g, '').trim();
+		const words = cleaned.split(/\s+/).filter(w => w.length > 0);
+		if (words.length === 0) return '?';
+		if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
+		return (words[0][0] + words[1][0]).toUpperCase();
+	}
+
 	function setupAbsensiPage() {
-		teacherName.textContent = currentUser.name;
+		updateUserProfiles();
 		showPage('absensi');
-		
-		// Reset tampilan Foto Profil ke default
-		profileImage.classList.add('hidden');
-		profileFallback.classList.remove('hidden');
-		
-		// Set URL Sumber Foto
-		const photoUrl = `${PHOTO_BASE_URL}${currentUser.nik}.jpg`;
-		profileImage.src = photoUrl;
-
-		profileImage.onload = function() {
-			profileImage.classList.remove('hidden');
-			profileFallback.classList.add('hidden');
-		};
-
-		profileImage.onerror = function() {
-			profileImage.classList.add('hidden');
-			profileFallback.classList.remove('hidden');
-		};
-
 		fetchTodayHistory();
 	}
 
@@ -456,16 +498,12 @@
 					</tr>
 				`;
 			} else {
-				 historyTableBody.innerHTML = '<tr><td colspan="2" class="text-center py-3 text-sm text-gray-500">Belum ada absensi hari ini.</td></tr>';
+				historyTableBody.innerHTML = '<tr><td colspan="2" class="text-center py-3 text-sm text-gray-500">Belum ada absensi hari ini.</td></tr>';
 			}
 
-			if (data.jamMasuk) {
-				clockInButton.disabled = true;
-				clockOutButton.disabled = !!data.jamKeluar;
-			} else {
-				clockInButton.disabled = false;
-				clockOutButton.disabled = true;
-			}
+			// Mengatur status tombol absensi
+			clockInButton.disabled = Boolean(data.jamMasuk);
+			clockOutButton.disabled = !data.jamMasuk || Boolean(data.jamKeluar);
 
 		} catch (error) {
 			console.error('Error:', error);
@@ -487,23 +525,17 @@
 			const records = await response.json();
 
 			if (records.length > 0) {
-				 let tableContent = '';
-				 records.forEach((rec, index) => {
-					 const rowClass = index % 2 === 1 ? 'bg-gray-50' : 'bg-white';
-					 tableContent += `
-						<tr class="${rowClass} hover:bg-teal-100 border-b border-gray-200">
-							<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.hari}</td>
-							<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.tanggal}</td>
-							<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.jamMasuk || '-'}</td>
-							<td class="py-2 px-2 text-sm text-gray-700 text-center">${rec.jamKeluar || '-'}</td>
-						</tr>
-					 `;
-				 });
-				 monthlyHistoryTableBody.innerHTML = tableContent;
+				monthlyHistoryTableBody.innerHTML = records.map((rec, index) => `
+					<tr class="${index % 2 === 1 ? 'bg-gray-50' : 'bg-white'} hover:bg-teal-100 border-b border-gray-200">
+						<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.hari}</td>
+						<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.tanggal}</td>
+						<td class="py-2 px-2 text-sm text-gray-700 text-center border-r border-gray-200">${rec.jamMasuk || '-'}</td>
+						<td class="py-2 px-2 text-sm text-gray-700 text-center">${rec.jamKeluar || '-'}</td>
+					</tr>
+				`).join('');
 			} else {
 				monthlyHistoryTableBody.innerHTML = '<tr><td colspan="4" class="text-center py-10 text-sm text-gray-500">Tidak ada data riwayat absensi ditemukan.</td></tr>';
 			}
-
 		} catch(error) {
 			console.error('Error fetching monthly history:', error);
 			monthlyHistoryTableBody.innerHTML = '<tr><td colspan="4" class="text-center py-10 text-sm text-red-500">Gagal memuat riwayat. Periksa koneksi Anda.</td></tr>';
@@ -525,7 +557,7 @@
 				mode: 'no-cors',
 				cache: 'no-cache',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ nik: currentUser.nik, name: currentUser.name, action: action })
+				body: JSON.stringify({ nik: currentUser.nik, name: currentUser.name, action })
 			});
 			
 			await new Promise(resolve => setTimeout(resolve, 1500));
@@ -544,7 +576,6 @@
 		}
 	}
 
-	// Event Listeners
 	loginButton.addEventListener('click', handleLogin);
 	nikInput.addEventListener('keypress', (event) => {
 		if (event.key === 'Enter') {
@@ -567,9 +598,8 @@
 	});
 	backButton.addEventListener('click', () => showPage('absensi'));
 
-	// Inisialisasi awal aplikasi
+	// Inisialisasi Aplikasi
 	document.addEventListener('DOMContentLoaded', async () => {
-		// Mengisi tahun secara dinamis ke semua elemen ber-class "year"
 		const currentYear = new Date().getFullYear();
 		document.querySelectorAll('.year').forEach(el => el.textContent = currentYear);
 
