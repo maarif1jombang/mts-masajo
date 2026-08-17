@@ -67,8 +67,6 @@
 </head>
 
 <body>
-	<div style="background-image:url('https://maarif1jombang.github.io/file/bg.jpg');background-size: cover;background-repeat: no-repeat;background-position: center;background-attachment: fixed;height: 100%;width: 100%;">
-
 	<div class="flex items-center justify-center min-h-screen p-4">
 	
 		<!-- 1. Kontainer Login -->
@@ -196,7 +194,7 @@
 			<!-- LAYOUT FOTO SISWA -->
 			<div class="card bg-base-100 overflow-hidden shadow-sm rounded-lg relative">
 				<div class="w-full bg-[#009675]" style="height: 65px;"></div>
-				<div class="flex flex-col sm:flex-row items-center sm:items-start px-4 pb-4 gap-2 sm:gap-4">
+				<div class="flex flex-col sm:flex-row items-center sm:items-start px-0 sm:px-4 pb-4 gap-0 sm:gap-4 relative">
 					
 					<!-- Avatar Bulat Sempurna -->
 					<div class="avatar avatar-placeholder" style="margin-top: -50px; flex-shrink: 0; z-index: 10;">
@@ -206,17 +204,25 @@
 						</div>
 					</div>
 					
-					<!-- User Info (Nama & NISN) -->
-					<div class="text-center sm:text-left flex-1" style="margin-top: 6px;">
-						<h1 id="student-name" class="text-gray-900 font-bold uppercase tracking-wide" style="font-size: 18px; line-height: 1.2;"></h1>
-						<p id="student-nisn" class="text-gray-400 font-medium" style="font-size: 13px;"></p>
+					<!-- NAMA SISWA (Kiri atas - Banner Hijau) -->
+					<div class="text-center sm:text-left flex-1 sm:absolute sm:top-[-40px] sm:left-[132px] z-20" style="margin-top: 14px;">
+						<h1 id="student-name" class="text-gray-900 sm:text-white font-bold uppercase tracking-wide" style="font-size: 18px; line-height: 1.2;"></h1>
+					</div>
+
+					<!-- NISN SISWA (Kiri bawah - Area Putih) -->
+					<div class="text-center sm:text-left sm:absolute sm:top-[4px] sm:left-[132px] z-10">
+						<div class="flex flex-row gap-1 items-center justify-center sm:justify-start">
+							<p class="text-gray-400 font-medium" style="font-size: 14px;">NISN</p>
+							<p class="w-1 h-1 rounded-full bg-gray-400"></p>
+							<p id="student-nisn" class="text-gray-400 font-medium" style="font-size: 14px;"></p>
+						</div>
 					</div>
 					
-					<!-- STATUS BADGE GROUP (RESPONSIF BERPINDAH) -->
-					<div class="sm:absolute sm:top-[28px] sm:left-[132px] sm:right-4 z-20 flex flex-wrap items-center justify-center sm:justify-between gap-2 mt-[14px] sm:mt-0 w-full sm:w-auto">
+					<!-- STATUS BADGE & TOMBOL (Responsif Total) -->
+					<div class="w-full flex flex-row flex-wrap sm:flex-col items-center justify-center sm:justify-start gap-2 mt-[14px] sm:mt-0 sm:absolute sm:inset-x-0 sm:top-0 sm:px-4">
 						
-						<!-- Wadah khusus Badge agar tetap fleksibel antara HP (center) dan Laptop (kiri) -->
-						<div class="flex flex-wrap gap-2 items-center justify-center sm:justify-start">
+						<!-- GRUP BADGE (Di HP menyatu sebaris, Di Laptop nempel kanan atas di Banner) -->
+						<div class="flex flex-wrap gap-2 items-center justify-center sm:justify-end sm:absolute sm:top-[-32px] sm:right-4 z-20">
 							<!-- Bingkai 1: Teks e-Ardis -->
 							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">
 								<div class="flex flex-row">
@@ -228,18 +234,19 @@
 							<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8F8F2] text-[#009675] border border-[#D1F2E6]">MTs Ma'arif 1 Jombang</span>
 						</div>
 						
-						<!-- Bingkai 3: Tombol Kembali (Otomatis ke kanan di laptop via sm:ml-auto) -->
-						<button id="back-button" class="sm:ml-auto inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-red-200 text-red-700 bg-red-100 hover:bg-red-200 transition-colors">
-							<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-							</svg>
-							<span>‎  </span>
-							<!-- Teks tersembunyi di HP, muncul saat laptop (sm ke atas) -->
-							<span class="hidden sm:inline">‎Kembali</span>
-						</button>
-						
+						<!-- GRUP TOMBOL KEMBALI (Di HP menyatu sebaris, Di Laptop nempel kanan bawah di Area Putih) -->
+						<div class="flex items-center justify-center sm:justify-end sm:absolute sm:top-[5px] sm:right-4 z-10">
+							<button id="back-button" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-red-200 text-red-700 bg-red-100 hover:bg-red-200 transition-colors">
+								<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://w3.org">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+								</svg>
+								<span>‎  </span>
+								<span class="hidden sm:inline">‎Kembali</span>
+							</button>
+						</div>
+
 					</div>
-					
+
 				</div>
 			</div>
 			
